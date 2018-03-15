@@ -6,7 +6,7 @@ import { Control } from './Control';
 // --- GeoObjects
 
 export function Placemark({ geometry, ...props }) {
-  return <GeoObject geometry={{ type: 'Point', ...geometry }} {...props} />;
+  return <GeoObject constructor={ 'Placemark' } geometry={{ type: 'Point', ...geometry }} {...props} />;
 }
 
 export function Polyline({ geometry, ...props }) {

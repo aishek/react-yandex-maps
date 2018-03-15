@@ -15,6 +15,7 @@ export class GeoObject extends React.Component {
         arrayOf(arrayOf(number)),
         arrayOf(arrayOf(arrayOf(number))),
       ]).isRequired,
+      constructor: string,
       radius: number,
     }),
 
@@ -46,7 +47,8 @@ export class GeoObject extends React.Component {
 
     const { ymaps, parent } = this.context;
 
-    const instance = new ymaps.GeoObject({ geometry, properties }, options);
+    const klass = (this.props.constructor ? ymaps[this.props.constructor] : ymaps.GeoObject);
+    const instance = new klass({ geometry, properties }, options);
 
     Object.keys(events).forEach(key => addEvent(events[key], key, instance));
 
